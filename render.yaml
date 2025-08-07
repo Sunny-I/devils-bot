@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: ai-chatbot
+    env: python
+    plan: free
+    buildCommand: ./build.sh
+    startCommand: gunicorn ai_chatbot.wsgi:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.16
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: DEBUG
+        value: False
